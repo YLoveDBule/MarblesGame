@@ -20,6 +20,5 @@ public:
 	}
 private:
 	b2World *_physicsWorld;
-	cocos2d::Mat4 _modelViewMV;
 	GLESDebugDraw *_debugDraw;
 };

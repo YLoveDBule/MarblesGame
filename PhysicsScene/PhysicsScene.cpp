@@ -64,7 +64,11 @@ void PhysicsScene::initPhysicsWorld()
 	_debugDraw = new GLESDebugDraw(PTM_RATIO);   //这里新建一个 debug渲染模块                
 	_physicsWorld->SetDebugDraw(_debugDraw);    //设置                 
 	uint32 flags = 0;   
-	flags += b2Draw::e_shapeBit;                 
+	flags += b2Draw::e_shapeBit;   
+	flags += b2Draw::e_centerOfMassBit;
+	flags += b2Draw::e_aabbBit;
+	flags += b2Draw::e_centerOfMassBit;
+	flags += b2Draw::e_jointBit;
 	//b2Draw::e_centerOfMassBit;   //获取需要显示debugdraw的块                 
 	//b2Draw::e_aabbBit;  //AABB块                 
 	//b2Draw::e_centerOfMassBit; 物体质心                 
@@ -75,13 +79,13 @@ void PhysicsScene::initPhysicsWorld()
 
 void PhysicsScene::draw(cocos2d::Renderer * renderer, const cocos2d::Mat4 & transform, uint32_t flags)
 {
-	glDisable(GL_TEXTURE_2D);
+	/*glDisable(GL_TEXTURE_2D);
 	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);*/
 	_physicsWorld->DrawDebugData();   //这个一定要写  
-	glEnable(GL_TEXTURE_2D);
+	/*glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);*/
 }
 
 
