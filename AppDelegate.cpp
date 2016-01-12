@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "GameLayer\GameLayer.h"
 
 USING_NS_CC;
 
@@ -40,7 +41,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-		glview = GLViewImpl::createWithRect("MarblesGame", Rect(0, 0, 640, 960));//designResolutionSize.width, designResolutionSize.height));
+		glview = GLViewImpl::createWithRect("MarblesGame", Rect(0, 0,designResolutionSize.width, designResolutionSize.height));
 #else
         glview = GLViewImpl::create("MarblesGame");
 #endif
@@ -75,7 +76,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+	auto scene = GameLayer::createScene();//HelloWorld::createScene();
 
     // run
     director->runWithScene(scene);
